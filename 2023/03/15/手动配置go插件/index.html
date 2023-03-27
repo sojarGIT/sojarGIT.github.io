@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sojar&#39;s blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="tittle:  关于go插件自动配置失败后手动配置操作 关于go插件自动配置失败后手动配置操作问题解决办法需要手动从github上面将包下载下来 在src目录下面建立两个目录 1234– src |–golang.org 	|–x |–github.com  有些包是需要放到github.com,有另外一部分是需要放到golang.org\x这个文件夹中的 下面就一个一个的下载包 gopkgs包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sojar&#39;s blog">
+<meta property="og:url" content="http://example.com/2023/03/15/%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AEgo%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Sojar&#39;s blog">
+<meta property="og:description" content="tittle:  关于go插件自动配置失败后手动配置操作 关于go插件自动配置失败后手动配置操作问题解决办法需要手动从github上面将包下载下来 在src目录下面建立两个目录 1234– src |–golang.org 	|–x |–github.com  有些包是需要放到github.com,有另外一部分是需要放到golang.org\x这个文件夹中的 下面就一个一个的下载包 gopkgs包">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1235697/201902/1235697-20190219000742855-1876381948.png">
+<meta property="article:published_time" content="2023-03-15T06:38:08.120Z">
+<meta property="article:modified_time" content="2023-03-15T13:33:23.202Z">
+<meta property="article:author" content="sojar">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1235697/201902/1235697-20190219000742855-1876381948.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Sojar&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="https://ts1.cn.mm.bing.net/th/id/R-C.2ee868e8864f7c486b4d3fdba56be7f6?rik=m4MAuwGxFk%2bpfg&amp;riu=http%3a%2f%2fwww.gx8899.com%2fuploads%2fallimg%2f2017080704%2f3qpdwiopf12.jpg&amp;ehk=cx2Cp2GlOkenyv%2bT0HKc01er3tp5T7B8om%2bThVAAC14%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">sojar</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sojarGIT/sojarGIT.github.io" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="/1160185127@qq.com" title="mail">mail</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+					        
+								<a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+					        
+						</div>
+						<!-- music -->
+						
+							<!-- <div style="position: absolute; bottom: 120px; left: auto; width: 85%;"> -->
+							<div style="position: absolute; left: auto; width: 85%;">
+								<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=86 src="//music.163.com/outchain/player?type=2&id=32737993&auto=1&height=66"></iframe>
+							</div>
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">welcome my blog,I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://ts1.cn.mm.bing.net/th/id/R-C.2ee868e8864f7c486b4d3fdba56be7f6?rik=m4MAuwGxFk%2bpfg&amp;riu=http%3a%2f%2fwww.gx8899.com%2fuploads%2fallimg%2f2017080704%2f3qpdwiopf12.jpg&amp;ehk=cx2Cp2GlOkenyv%2bT0HKc01er3tp5T7B8om%2bThVAAC14%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sojarGIT/sojarGIT.github.io" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="/1160185127@qq.com" title="mail">mail</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="facebook" target="_blank" href="#" title="facebook">facebook</a>
+			        
+						<a class="twitter" target="_blank" href="#" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-手动配置go插件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/03/15/%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AEgo%E6%8F%92%E4%BB%B6/" class="article-date">
+  	<time datetime="2023-03-15T06:38:08.120Z" itemprop="datePublished">2023-03-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>tittle:  关于go插件自动配置失败后手动配置操作</p>
+<h1 id="关于go插件自动配置失败后手动配置操作"><a href="#关于go插件自动配置失败后手动配置操作" class="headerlink" title="关于go插件自动配置失败后手动配置操作"></a>关于go插件自动配置失败后手动配置操作</h1><p>问题解决办法<br>需要手动从github上面将包下载下来</p>
+<p>在src目录下面建立两个目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">– src</span><br><span class="line"> |–golang.org</span><br><span class="line"> 	|–x</span><br><span class="line"> |–github.com</span><br></pre></td></tr></table></figure>
+
+<p>有些包是需要放到github.com,有另外一部分是需要放到golang.org\x这个文件夹中的</p>
+<p>下面就一个一个的下载包</p>
+<h2 id="gopkgs包"><a href="#gopkgs包" class="headerlink" title="gopkgs包"></a>gopkgs包</h2><p>在src的gitbub.com文件夹下，使用cmd命令窗口输入,一定要按照这个文件目录生成，要不然没有办法安装，</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/uudashr/gopkgs.git">https://github.com/uudashr/gopkgs.git</a> uudashr&#x2F;gopkgs</p>
+<p>这个包的安装需要另外两个辅助包：</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/pkg/errors">https://github.com/pkg/errors</a> pkg&#x2F;errors</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/karrick/godirwalk.git">https://github.com/karrick/godirwalk.git</a> karrick&#x2F;godirwalk</p>
+<p>下载完上面的两个辅助包，就可以进行安装了</p>
+<p>使用cmd命令行窗口（在任意目录下），输入下面的命令就可以安装了：</p>
+<p>go.exe install github.com&#x2F;uudashr&#x2F;gopkgs&#x2F;v2&#x2F;cmd&#x2F;gopkgs@latest</p>
+<p>安装完成之后，在src同级的bin目录下会生成gocode.exe</p>
+<h2 id="go-outline包"><a href="#go-outline包" class="headerlink" title="go-outline包"></a>go-outline包</h2><p>在github.com目录下面，使用下面的命令下载包：</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/ramya-rao-a/go-outline.git">https://github.com/ramya-rao-a/go-outline.git</a> ramya-rao-a&#x2F;go-outline</p>
+<p>安装：（在任意目录下面，下面都一样）</p>
+<p>go install github.com&#x2F;ramya-rao-a&#x2F;go-outline@lates</p>
+<h2 id="go-symbols包"><a href="#go-symbols包" class="headerlink" title="go-symbols包"></a>go-symbols包</h2><p>下载：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/acroca/go-symbols.git">https://github.com/acroca/go-symbols.git</a> acroca&#x2F;go-symbols</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;acroca&#x2F;go-symbols@lates</p>
+<p>安装完成之后，在bin下会生成go-symbols.exe</p>
+<h2 id="guru、gorename包"><a href="#guru、gorename包" class="headerlink" title="guru、gorename包"></a>guru、gorename包</h2><p>这两个包在tools这个大包中，我们把这个大包下载下来，这个比较大，下载比较慢</p>
+<p>下载：在golang.org&#x2F;x目录下面，没有x这个目录新建一个，这个就是字母x，不是指代</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/golang/tools.git">https://github.com/golang/tools.git</a> tools</p>
+<p>这个的安装也需要辅助包：</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/golang/xerrors.git">https://github.com/golang/xerrors.git</a> xerrors （在golang.org&#x2F;x目录下）</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/golang/mod.git">https://github.com/golang/mod.git</a> mod（在golang.org&#x2F;x目录下）</p>
+<p>安装：</p>
+<p>go install golang.org&#x2F;x&#x2F;tools&#x2F;cmd&#x2F;guru@lates</p>
+<p>go install golang.org&#x2F;x&#x2F;tools&#x2F;cmd&#x2F;gorename@lates</p>
+<p>在bin目录下面会出现guru.exe、gorename.exe</p>
+<h2 id="gotests包"><a href="#gotests包" class="headerlink" title="gotests包"></a>gotests包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/cweill/gotests.git">https://github.com/cweill/gotests.git</a> cweill&#x2F;gotests</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;cweill&#x2F;gotests@lates</p>
+<p>gomodifytags包</p>
+<p>下载：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/fatih/gomodifytags.git">https://github.com/fatih/gomodifytags.git</a> fatih&#x2F;gomodifytags</p>
+<p>这个也需要辅助包：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/fatih/structtag.git">https://github.com/fatih/structtag.git</a> fatih&#x2F;structtag</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/fatih/camelcase.git">https://github.com/fatih/camelcase.git</a> fatih&#x2F;camelcase</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;fatih&#x2F;gomodifytags@lates</p>
+<p>在bin下会出现一个gomodifytags.exe</p>
+<h2 id="impl包"><a href="#impl包" class="headerlink" title="impl包"></a>impl包</h2><p>下载：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/josharian/impl.git">https://github.com/josharian/impl.git</a> josharian&#x2F;impl</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;josharian&#x2F;impl@lates</p>
+<p>在bin下会出现impl.exe</p>
+<h2 id="fillstruct包"><a href="#fillstruct包" class="headerlink" title="fillstruct包"></a>fillstruct包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/davidrjenni/reftools.git">https://github.com/davidrjenni/reftools.git</a> davidrjenni&#x2F;reftools</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;davidrjenni&#x2F;reftools&#x2F;cmd&#x2F;fillstruct@lates</p>
+<p>在bin下会出现fillstruct.exe</p>
+<p>goplay包</p>
+<p>下载：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/haya14busa/goplay">https://github.com/haya14busa/goplay</a> haya14busa&#x2F;goplay</p>
+<p>这个需要辅助包：在github.com目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/skratchdot/open-golang.git">https://github.com/skratchdot/open-golang.git</a> skratchdot&#x2F;open-golang</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;haya14busa&#x2F;goplay&#x2F;cmd&#x2F;goplay@lates</p>
+<p>在bin目录下面会出现goplay.exe</p>
+<h2 id="godoctor包"><a href="#godoctor包" class="headerlink" title="godoctor包"></a>godoctor包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/godoctor/godoctor.git">https://github.com/godoctor/godoctor.git</a> godoctor&#x2F;godoctor</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;godoctor&#x2F;godoctor@lates</p>
+<p>在bin目录下会出现godoctor.exe</p>
+<h2 id="dlv包"><a href="#dlv包" class="headerlink" title="dlv包"></a>dlv包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/go-delve/delve.git">https://github.com/go-delve/delve.git</a> go-delve&#x2F;delve</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;go-delve&#x2F;delve&#x2F;cmd&#x2F;dlv@lates</p>
+<p>会在bin目录下面生成dlv.exe</p>
+<h2 id="gocode-gomod包"><a href="#gocode-gomod包" class="headerlink" title="gocode-gomod包"></a>gocode-gomod包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/stamblerre/gocode.git">https://github.com/stamblerre/gocode.git</a> stamblerre&#x2F;gocode</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;stamblerre&#x2F;gocode@lates</p>
+<p>在bin目录下面会出现gocode-gomod.exe</p>
+<h2 id="godef包"><a href="#godef包" class="headerlink" title="godef包"></a>godef包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/rogpeppe/godef.git">https://github.com/rogpeppe/godef.git</a> rogpeppe&#x2F;godef</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;rogpeppe&#x2F;godef@lates</p>
+<p>在bin目录下面会出现godef.exe文件</p>
+<h2 id="goreturns包"><a href="#goreturns包" class="headerlink" title="goreturns包"></a>goreturns包</h2><p>下载：在github.com目录下面，这个有点慢</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/sqs/goreturns.git">https://github.com/sqs/goreturns.git</a> sqs&#x2F;goreturns</p>
+<p>安装：</p>
+<p>go install github.com&#x2F;sqs&#x2F;goreturns@lates</p>
+<p>在bin目录下会生成goreturns.exe</p>
+<p>lint包</p>
+<p>下载：在golang.org&#x2F;x目录下面</p>
+<p>git clone <a target="_blank" rel="noopener" href="https://github.com/golang/lint.git">https://github.com/golang/lint.git</a> lint</p>
+<p>安装：</p>
+<p>go install golang.org&#x2F;x&#x2F;lint&#x2F;golint@lates</p>
+<p>在bin下面会出现golint.exe<br>————————————————<br>版权声明：本文为CSDN博主「爱喝水的社长」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiazhipeng1000/article/details/109584712">https://blog.csdn.net/xiazhipeng1000/article/details/109584712</a></p>
+<p>注：vscode拉取golang的包走的是socket协议，如果你的上网代理只是走http协议，则需要转成socket。</p>
+<p>　　至于怎么转，本宝还没去研究，因为我有第二方案：</p>
+<p>　　因为golang的包是托管在github上面，所以我们可以手动从github上面clone到本地进行安装</p>
+<p>　　具体是这样的，在GOPATH目录下的src文件夹中，创建目录：golang.org&#x2F;x</p>
+<p>　　打开控制台，进入该目录，执行以下命令进行拷贝：</p>
+<p>　　<img src="https://img2018.cnblogs.com/blog/1235697/201902/1235697-20190219000742855-1876381948.png" alt="img"></p>
+<p>　　</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`git clone http:``//github.com/golang/tools` `git clone http:``//github.com/golang/lint` `git clone http:``//github.com/golang/net` `git clone http:``//github.com/golang/text` `git clone http:``//github.com/golang/crypto` `git clone http:``//github.com/golang/sys`</span><br></pre></td></tr></table></figure>
+
+<p>　　</p>
+<p>　　拷贝完成后，打开控制台，进入运行目录，执行以下命令：</p>
+<p>　　go get -u -v github.com&#x2F;nsf&#x2F;gocode</p>
+<p>　　go get -u -v github.com&#x2F;sqs&#x2F;goreturns</p>
+<p>　　</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`go ``get` `-u -v github.com/golang/lint/golint` `go ``get` `-u -v github.com/newhook/go-symbols` `go install golang.org/x/tools/cmd/guru` `go install golang.org/x/tools/cmd/gorename` `go ``get` `-u -v github.com/rogpeppe/godef` `go ``get` `-u -v github.com/lukehoban/go-outline` `go ``get` `-u -v github.com/derekparker/delve/cmd/dlv` `注：以上命令需按顺序执行，建议单行执行命令`</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/03/23/%E5%BC%95%E7%94%A8%E5%92%8C%E8%A7%A3%E5%BC%95%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          引用和解引用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/15/Gop%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于go插件自动配置失败后手动配置操作</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2023 sojar
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
